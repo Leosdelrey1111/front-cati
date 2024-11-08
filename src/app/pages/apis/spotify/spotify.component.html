@@ -1,0 +1,53 @@
+<!-- src/app/pages/spotify/spotify.component.html -->
+<div class="spotify-container">
+  <div *ngIf="isLoading" class="loading-spinner">
+    <div class="loading-spinner__circle"></div>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <ng-container *ngIf="!isLoading && !error">
+    <section class="tracks">
+      <h2 class="tracks__title">Musica de "José Alfredo Jiménez" artista representativo de la región.</h2>
+      <h2>Top 10 Canciones.</h2>
+      <div class="tracks__grid">
+        <div *ngFor="let track of topTracks" class="track-card">
+          <div class="track-card__image-container">
+            <img class="track-card__image" [src]="track.image" [alt]="track.name">
+            <button class="track-card__play" 
+                    (click)="playTrack(track)"
+                    [class.track-card__play--playing]="track.isPlaying">
+              <i class="fas" [class.fa-play]="!track.isPlaying" [class.fa-pause]="track.isPlaying"></i>
+            </button>
+          </div>
+          <div class="track-card__info">
+            <h3 class="track-card__title">{{ track.name }}</h3>
+            <p class="track-card__duration">{{ formatDuration(track.duration_ms) }}</p>
+          </div>
+          <div class="track-card__actions">
+            <button class="track-card__button"
+                    (click)="addToPlaylist(track)"
+                    title="Agregar a mi playlist">
+              <i class="fas fa-plus"></i>
+            </button>
+            <a [href]="track.external_url" 
+               target="_blank"
+               class="spotify-link"
+               title="Abrir en Spotify">
+              <i class="fab fa-spotify"></i>
+            </a>
+          </div>
+          
+          <!-- Reproductor component -->
+          <app-reproductor 
+            *ngIf="selectedTrack?.id === track.id"
+            [track]="selectedTrack"
+            (closePlayer)="onClosePlayer()">
+          </app-reproductor>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+</div>

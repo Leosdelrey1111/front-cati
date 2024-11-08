@@ -1,0 +1,44 @@
+/* Aplicar flexbox directamente al body para centrar el botón */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura completa de la ventana */
+    margin: 0; /* Eliminar márgenes del body */
+  }
+  
+  /* Estilo del botón */
+  .facebook-button {
+    background-color: #4267B2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .facebook-button:hover {
+    background-color: #365899;
+  }
+  
+  .facebook-button:focus {
+    outline: none;
+  }
+  
+  /* Estilo responsive */
+  @media (max-width: 600px) {
+    .facebook-button {
+      font-size: 14px;
+      padding: 8px 16px;
+      
+    }
+  }
+  

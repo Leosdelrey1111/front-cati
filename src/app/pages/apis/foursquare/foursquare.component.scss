@@ -1,0 +1,163 @@
+/* General para la interfaz */
+body {
+  font-family: 'Merriweather', serif; /* Fuente más elegante y rústica */
+  background-color: #f4e6d5; /* Color suave que recuerda a la tierra */
+  color: #4b4b4b; /* Gris oscuro para el texto */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita el desplazamiento horizontal innecesario */
+}
+
+/* Estilo de las tarjetas */
+.place-card {
+  border-radius: 12px;
+  margin: 20px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5e0c3, #d8c1a2); /* Colores cálidos */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid #c6b79e; /* Borde cálido y suave */
+}
+
+.place-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Información del lugar */
+.place-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Nombre del lugar */
+.place-name {
+  font-size: 2.2rem; /* Tamaño ajustado para no ser tan grande pero seguir notorio */
+  font-weight: 700;
+  color: #3a2e1c; /* Color marrón cálido y oscuro */
+  margin-bottom: 10px;
+  font-family: 'Rock Salt', cursive, 'Merriweather', serif; /* Tipografía rústica pero elegante */
+  letter-spacing: 2px;
+  text-transform: uppercase; /* Hace el texto más imponente */
+}
+
+/* Dirección del lugar */
+.place-address {
+  font-size: 1.6rem; /* Tamaño aumentado para mayor visibilidad */
+  color: #91651f; /* Color más cálido y visible */
+  margin-bottom: 12px;
+  font-style: italic;
+  font-family: 'Playfair Display', serif; /* Elegante y serifada */
+}
+
+/* Distancia del lugar */
+.place-distance {
+  font-size: 1.4rem; /* Tamaño ligeramente más grande */
+  color: #8f592d; /* Color marrón oscuro para más contraste */
+  margin-bottom: 16px;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  text-transform: capitalize;
+}
+
+.place-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+/* Estilo de las categorías */
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #795923; /* Beige cálido */
+  padding: 6px 12px;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.category-item:hover {
+  background-color: #b0a288; /* Un tono más oscuro en hover */
+}
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.category-name {
+  font-size: 1rem;
+}
+
+/* Estilo de las fotos */
+.place-photos {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  overflow-x: visible; /* Permite que las imágenes se salgan del contenedor */
+  padding-bottom: 10px;
+  transition: all 0.3s ease; /* Suaviza el cambio de tamaño */
+}
+
+.place-photo {
+  width: 180px; /* Imagen más grande */
+  height: 120px; /* Ajustar la altura */
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease; /* Efecto suave */
+  cursor: pointer; /* Cambia el puntero para indicar que es interactivo */
+}
+
+.place-photo:hover {
+  transform: scale(2); /* Duplicar tamaño de la imagen */
+  z-index: 10; /* Asegura que la imagen ampliada se quede por encima de otros elementos */
+}
+
+/* Asegura que el body se expanda cuando la imagen crezca */
+.place-card {
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 20px; /* Colores cálidos que evocan tierra y madera */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid #b88b6a;
+  position: relative; /* Asegura que las imágenes no se salgan fuera del card */
+}
+
+/* Mensaje cuando no se encuentran lugares */
+.no-places-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #8b7e6e;
+  margin-top: 30px;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
+/* Fondo del body */
+body {
+  background-color: #f9f4e9; /* Blanco suave */
+}
+
+/* Estilo para iconos */
+.icon {
+  font-size: 24px;
+  color: #c6b79e; /* Beige cálido */
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #b0a288; /* Un tono más oscuro en hover */
+}

@@ -1,0 +1,33 @@
+<div class="weather-container">
+    <div *ngIf="loading" class="loading">
+      Cargando pronóstico...
+    </div>
+  
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="!loading && !error" class="forecast-grid">
+      <div *ngFor="let day of forecast" 
+           class="forecast-card"
+           [class.today]="isToday(day.date)">
+        <div class="date">
+          {{ day.date | titlecase }}
+          <span *ngIf="isToday(day.date)">(Hoy)</span>
+        </div>
+        <div class="temperature">
+          {{ formatTemperature(day.main.temp) }}°C
+        </div>
+        <div class="weather-icon">
+          <img [src]="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'"
+               [alt]="day.weather[0].description">
+        </div>
+        <div class="description">
+          {{ day.weather[0].description }}
+        </div>
+        <div class="humidity">
+          Humedad: {{ day.main.humidity }}%
+        </div>
+      </div>
+    </div>
+  </div>

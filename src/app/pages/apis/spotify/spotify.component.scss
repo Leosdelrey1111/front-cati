@@ -1,0 +1,211 @@
+// Variables
+$primary-color: #1db954;
+$secondary-color: #121212;
+$text-color: #ffffff;
+$card-bg: #181818;
+$hover-bg: #282828;
+
+// Breakpoints Map
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// Mixins
+@mixin respond-to($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// Base Container
+.spotify-container {
+  padding: 2rem;
+  background-color: $secondary-color;
+  min-height: 100vh;
+  color: $text-color;
+}
+
+// Loading State
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+
+  &__circle {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba($primary-color, 0.3);
+    border-radius: 50%;
+    border-top-color: $primary-color;
+    animation: spin 1s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Error State
+.error-message {
+  background-color: #e74c3c;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+// Tracks Section
+.tracks {
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+
+    @include respond-to(sm) { grid-template-columns: repeat(2, 1fr); }
+    @include respond-to(md) { grid-template-columns: repeat(3, 1fr); }
+    @include respond-to(lg) { grid-template-columns: repeat(4, 1fr); }
+    @include respond-to(xl) { grid-template-columns: repeat(5, 1fr); }
+  }
+}
+
+// Track Card
+.track-card {
+  background-color: $card-bg;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background-color: $hover-bg;
+
+    .track-card__play {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    margin-bottom: 1rem;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  &__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      background-color: lighten($primary-color, 5%);
+    }
+
+    &--playing {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__info {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__duration {
+    font-size: 0.875rem;
+    color: rgba($text-color, 0.7);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    color: rgba($text-color, 0.7);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+
+    &:hover {
+      color: $text-color;
+    }
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__spotify-link {
+    color: $primary-color;
+
+    &:hover {
+      color: lighten($primary-color, 10%);
+    }
+  }
+
+  &__player {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($card-bg, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 8px 8px;
+    transition: transform 0.3s ease;
+  }
+}

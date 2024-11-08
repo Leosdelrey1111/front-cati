@@ -1,0 +1,35 @@
+<div *ngIf="places.length > 0; else noPlaces">
+  <div *ngFor="let place of places" class="place-card">
+    <!-- Contenedor principal del lugar -->
+    <div class="place-info">
+      <!-- Nombre del lugar -->
+      <h3 class="place-name">{{ place.name }}</h3>
+
+      <!-- Dirección -->
+      <p class="place-address">{{ place.location.formatted_address }}</p>
+
+      <!-- Distancia (opcional) -->
+      <p class="place-distance">Distancia: {{ place.distance }} metros</p>
+
+      <!-- Categorías y su ícono -->
+      <div *ngIf="place.categories?.length" class="place-categories">
+        <div *ngFor="let category of place.categories" class="category-item">
+          <img [src]="category.icon.prefix + 'bg_64' + category.icon.suffix" alt="{{ category.name }}" class="category-icon"/>
+          <span class="category-name">{{ category.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mostrar las fotos -->
+    <div class="place-photos" *ngIf="place.photos && place.photos.length > 0">
+      <img *ngFor="let photo of place.photos" [src]="photo" alt="Imagen de {{ place.name }}" class="place-photo" />
+    </div>
+  </div>
+</div>
+
+<!-- Mensaje cuando no se encuentran lugares -->
+<ng-template #noPlaces>
+  <p class="no-places-message">No se encontraron lugares.</p>
+</ng-template>
+
+<!--coment ell-->
