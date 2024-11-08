@@ -8,6 +8,12 @@ import { FoursquareService } from '../../../core/services/APIS/foursquare/foursq
 })
 export class FoursquareComponent implements OnInit {
   places: any[] = []; // Array para almacenar los lugares encontrados
+  ll: string= '21.1561,-100.9319';
+  query: string = '';
+  radius: string = '5000';
+  limit: string = '50'; 
+
+
 
   constructor(private foursquareService: FoursquareService) { }  // Inyectamos el servicio
 
@@ -16,17 +22,15 @@ export class FoursquareComponent implements OnInit {
   }
 
   fetchPlaces() {
-    this.foursquareService.obtenerLugares()
+    this.foursquareService.obtenerLugares(this.ll, this.query,this.radius,this.limit)
       .subscribe(
         response => {
-          // Filtra solo los lugares en Dolores Hidalgo C.I.N.
-          this.places = response.data.filter((place: any) => place.location?.locality === "Dolores Hidalgo Cuna de la Independencia Nacional");
+          this.places = response.data;
         },
         error => {
           console.error('Error al obtener los lugares', error);
         }
       );
   }
-  
   
 }

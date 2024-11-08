@@ -1,25 +1,84 @@
-/* General para la interfaz */
 body {
-  font-family: 'Merriweather', serif; /* Fuente más elegante y rústica */
-  background-color: #f4e6d5; /* Color suave que recuerda a la tierra */
-  color: #4b4b4b; /* Gris oscuro para el texto */
+  font-family: 'Merriweather', serif;
+  background-color: #f9f4e9;
+  color: #4b4b4b;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Evita el desplazamiento horizontal innecesario */
+}
+
+.titulo h1 {
+  font-family: 'Rock Salt', cursive;
+  color: #795923;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 2.5rem;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #b88b6a;
+  border-radius: 5px;
+  width: 300px;
+  font-family: 'Playfair Display', serif;
+}
+
+.search-button {
+  background-color: #795923;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+.search-button:hover {
+  background-color: #b0a288;
+}
+
+/* General para la interfaz */
+body {
+  font-family: 'Merriweather', serif;
+  background-color: #f4e6d5;
+  color: #4b4b4b;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor central para centrar el contenido */
+.container {
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
 }
 
 /* Estilo de las tarjetas */
 .place-card {
-  border-radius: 12px;
-  margin: 20px 0;
+  max-width: 1100px; /* Ancho máximo para las tarjetas */
+  margin: 20px auto;
   padding: 20px;
-  background: linear-gradient(135deg, #f5e0c3, #d8c1a2); /* Colores cálidos */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background: linear-gradient(135deg, #f5e0c3, #d8c1a2);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 2px solid #c6b79e; /* Borde cálido y suave */
+  border: 2px solid #c6b79e;
 }
 
 .place-card:hover {
@@ -36,28 +95,28 @@ body {
 
 /* Nombre del lugar */
 .place-name {
-  font-size: 2.2rem; /* Tamaño ajustado para no ser tan grande pero seguir notorio */
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #3a2e1c; /* Color marrón cálido y oscuro */
+  color: #3a2e1c;
   margin-bottom: 10px;
-  font-family: 'Rock Salt', cursive, 'Merriweather', serif; /* Tipografía rústica pero elegante */
+  font-family: 'Rock Salt', cursive, 'Merriweather', serif;
   letter-spacing: 2px;
-  text-transform: uppercase; /* Hace el texto más imponente */
+  text-transform: uppercase;
 }
 
 /* Dirección del lugar */
 .place-address {
-  font-size: 1.6rem; /* Tamaño aumentado para mayor visibilidad */
-  color: #91651f; /* Color más cálido y visible */
+  font-size: 1.6rem;
+  color: #91651f;
   margin-bottom: 12px;
   font-style: italic;
-  font-family: 'Playfair Display', serif; /* Elegante y serifada */
+  font-family: 'Playfair Display', serif;
 }
 
 /* Distancia del lugar */
 .place-distance {
-  font-size: 1.4rem; /* Tamaño ligeramente más grande */
-  color: #8f592d; /* Color marrón oscuro para más contraste */
+  font-size: 1.4rem;
+  color: #8f592d;
   margin-bottom: 16px;
   font-style: italic;
   font-family: 'Playfair Display', serif;
@@ -78,14 +137,14 @@ body {
   gap: 8px;
   font-size: 1rem;
   color: #fff;
-  background-color: #795923; /* Beige cálido */
+  background-color: #795923;
   padding: 6px 12px;
   border-radius: 25px;
   transition: background-color 0.3s ease;
 }
 
 .category-item:hover {
-  background-color: #b0a288; /* Un tono más oscuro en hover */
+  background-color: #b0a288;
 }
 
 .category-icon {
@@ -103,36 +162,23 @@ body {
   display: flex;
   gap: 16px;
   margin-top: 16px;
-  overflow-x: visible; /* Permite que las imágenes se salgan del contenedor */
+  overflow-x: auto;
   padding-bottom: 10px;
-  transition: all 0.3s ease; /* Suaviza el cambio de tamaño */
+  transition: all 0.3s ease;
 }
 
 .place-photo {
-  width: 180px; /* Imagen más grande */
-  height: 120px; /* Ajustar la altura */
+  width: 180px;
+  height: 120px;
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.3s ease; /* Efecto suave */
-  cursor: pointer; /* Cambia el puntero para indicar que es interactivo */
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .place-photo:hover {
-  transform: scale(2); /* Duplicar tamaño de la imagen */
-  z-index: 10; /* Asegura que la imagen ampliada se quede por encima de otros elementos */
-}
-
-/* Asegura que el body se expanda cuando la imagen crezca */
-.place-card {
-  border-radius: 10px;
-  margin: 20px 0;
-  padding: 20px; /* Colores cálidos que evocan tierra y madera */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 2px solid #b88b6a;
-  position: relative; /* Asegura que las imágenes no se salgan fuera del card */
+  transform: scale(1.1);
+  z-index: 10;
 }
 
 /* Mensaje cuando no se encuentran lugares */
@@ -148,16 +194,16 @@ body {
 
 /* Fondo del body */
 body {
-  background-color: #f9f4e9; /* Blanco suave */
+  background-color: #f9f4e9;
 }
 
 /* Estilo para iconos */
 .icon {
   font-size: 24px;
-  color: #c6b79e; /* Beige cálido */
+  color: #c6b79e;
   transition: color 0.3s ease;
 }
 
 .icon:hover {
-  color: #b0a288; /* Un tono más oscuro en hover */
+  color: #b0a288;
 }
